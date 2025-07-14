@@ -1,0 +1,32 @@
+print("Welcome and God bless to LoveOS installer!")
+print("WARNING: THIS WILL ERASE ALL DATA FROM THIS COMPUTER.")
+print("PRESS ENTER TO CONTINUE, HOLD CTRL+T TO STOP.")
+read()
+term.clear()
+print("Installing LoveOS with love...")
+
+-- Get current script name
+local currentFile = shell.getRunningProgram()
+local files = fs.list(".")
+
+-- Delete everything except this script
+for _, file in ipairs(files) do
+  if file ~= fs.getName(currentFile) then
+    shell.run("rm", file)
+  end
+end
+
+-- Download startup
+shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/startup.lua")
+
+-- Create apps folder and download apps
+shell.run("mkdir", "apps")
+shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/apps/LoveCreate.lua")
+shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/apps/Notes.lua")
+
+-- Move apps to /apps/
+shell.run("mv", "LoveCreate.lua", "/apps/LoveCreate.lua")
+shell.run("mv", "Notes.lua", "/apps/Notes.lua")
+
+print("LoveOS installation done. God bless you, God follow you!")
+fs.delete(currentFile)
