@@ -5,28 +5,41 @@ read()
 term.clear()
 print("Installing LoveOS with love...")
 
--- Get current script name
-local currentFile = shell.getRunningProgram()
-local files = fs.list(".")
+-- Current installer file
+local currentFile      = shell.getRunningProgram()   -- e.g. /disk/setup-loveos or /setup-loveos
+local currentFileName  = fs.getName(currentFile)     -- just "setup-loveos"
 
--- Delete everything except this script
-for _, file in ipairs(files) do
-  if file ~= fs.getName(currentFile) then
+-- Delete everything except this installer
+for _, file in ipairs(fs.list(".")) do
+  if file ~= currentFileName then
     shell.run("rm", file)
   end
 end
 
--- Download startup
+-- Download LoveOS core
 shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/startup.lua")
 
--- Create apps folder and download apps
+-- Download apps
 shell.run("mkdir", "apps")
 shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/apps/LoveCreate.lua")
 shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/apps/Notes.lua")
-
--- Move apps to /apps/
 shell.run("mv", "LoveCreate.lua", "/apps/LoveCreate.lua")
-shell.run("mv", "Notes.lua", "/apps/Notes.lua")
+shell.run("mv", "Notes.lua",     "/apps/Notes.lua")
 
-print("LoveOS installation done. God bless you, God follow you!")
-fs.delete(currentFile)
+print("LoveOS files installed successfully!")
+
+-- Create the rebooter script
+local f = fs.open("rebooter.lua", "w")
+f.write([[
+print("God bless you! Restarting into LoveOS...")
+os.sleep(2)
+local toDelete = "]] .. currentFileName .. [["
+if fs.exists(toDelete) then
+  fs.delete(toDelete)
+end
+os.reboot()
+]])
+f.close()
+
+-- Run rebooter (this never returns)
+shell.run("rebooter.lua")
