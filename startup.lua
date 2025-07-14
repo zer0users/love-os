@@ -71,8 +71,14 @@ while true do
   else
     if not ok then
       term.clear()
-      print("💥 Unexpected error: " .. tostring(err))
-      os.sleep(3)
+      print('ERROR! AN CRASH OCURRED!')
+      print("An error ocurred with love:" .. tostring(err))
+      print('PLEASE PRESS ENTER TO TURN OFF YOUR COMPUTER.')
+      read()
+      print('God bless you.')
+      print('God follow you.')
+      os.sleep(0.5)
+      shell.run('shutdown')
     end
     break
   end
