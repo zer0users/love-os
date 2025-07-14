@@ -38,10 +38,10 @@ local function appMenu()
     if fs.exists(path) then
       local ok, err = pcall(function() shell.run(path) end)
       if not ok then
-        print("\n❌ App crashed: " .. tostring(err))
+        print("\nApp crashed with love: " .. tostring(err))
       end
     else
-      print("\n❌ App '" .. app .. "' not found.")
+      print("\nApp '" .. app .. "' not found.")
     end
 
     print("\nPress Enter to return to menu…")
