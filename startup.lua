@@ -44,8 +44,6 @@ local function appMenu()
       print("\nApp '" .. app .. "' not found.")
     end
 
-    print("\nPress Enter to return to menu…")
-    read()
   end
 end
 
