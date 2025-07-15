@@ -26,9 +26,10 @@ shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/head
 shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/apps/UninstallSys.lua")
 shell.run("wget", "https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/apps/LoveDownload.lua")
 shell.run("mv", "LoveCreate.lua", "/apps/LoveCreate.lua")
-shell.run("mv", "Notes.lua",     "/apps/Notes.lua")
+shell.run("mv", "Notes.lua", "/apps/Notes.lua")
 shell.run("mv", "UninstallSys.lua", "/apps/UninstallSys.lua")
-shell.run("mv", LoveDownload.lua", "/apps/LoveDownload.lua")
+shell.run("mv", "LoveDownload.lua", "/apps/LoveDownload.lua")
+
 
 print("LoveOS files installed successfully!")
 
