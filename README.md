@@ -8,7 +8,7 @@ In a Pocket/Normal Computer type:
 
 
 ```computercraft
-wget https://github.com/zer0users/love-os/blob/main/setup-loveos
+wget https://raw.githubusercontent.com/zer0users/love-os/refs/heads/main/setup-loveos
 ```
 
 ```computercraft
