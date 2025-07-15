@@ -29,6 +29,7 @@ shell.run("mv", "LoveCreate.lua", "/apps/LoveCreate.lua")
 shell.run("mv", "Notes.lua", "/apps/Notes.lua")
 shell.run("mv", "UninstallSys.lua", "/apps/UninstallSys.lua")
 shell.run("mv", "LoveDownload.lua", "/apps/LoveDownload.lua")
+print('God bless you.')
 
 
 print("LoveOS files installed successfully!")
