@@ -45,7 +45,8 @@ local function appMenu()
     print("(BETA)\n")
 
     shell.run("ls", "/apps/")
-    print("\nType the name of an app to run (or 'reboot'):")
+    print("\nType the name of an loveapp to run (or 'reboot'):")
+    print()
     io.write("> ")
     local app = read()
 
